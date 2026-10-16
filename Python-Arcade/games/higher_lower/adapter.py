@@ -52,11 +52,11 @@ class HigherLowerGame:
 
         # Original student game rules comparison:
         if val > self.num:
-            hint = "Too high"
-            self.message = f"{val} is Too High! Try a lower number."
+            hint = "HIGH"
+            self.message = "HIGH"
         elif val < self.num:
-            hint = "Too low"
-            self.message = f"{val} is Too Low! Try a higher number."
+            hint = "LOW"
+            self.message = "LOW"
         elif val == self.num:
             hint = "You guessed the number"
             self.won = True

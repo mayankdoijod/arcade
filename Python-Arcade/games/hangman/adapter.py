@@ -85,6 +85,11 @@ word_list = [
     "basketball", "volleyball", "champion", "stadium"
 ]
 
+# Support JS JSON literal tokens if evaluated in Python
+null = None
+true = True
+false = False
+
 class HangmanGame:
     def __init__(self):
         self.reset()
@@ -103,12 +108,19 @@ class HangmanGame:
         if self.game_over:
             return self.get_state()
 
+        if letter is None or letter == "null":
+            self.message = "Please enter a valid letter (A-Z)."
+            return self.get_state()
+
         char = str(letter).lower().strip()
         if not char or len(char) != 1 or not char.isalpha():
-            return {"error": "Please guess a single letter (A-Z)."}
+            self.message = "Please enter a valid letter (A-Z)."
+            return self.get_state()
 
+        # If letter was already guessed, show friendly message without reducing lives
         if char in self.guessed_letters:
-            return {"error": f"You already guessed '{char.upper()}'."}
+            self.message = f"You already guessed that letter! ('{char.upper()}')"
+            return self.get_state()
 
         self.guessed_letters.append(char)
 
@@ -118,7 +130,8 @@ class HangmanGame:
         else:
             self.lives -= 1
             self.message = f"Miss! '{char.upper()}' is not in the word."
-            if self.lives == 0:
+            if self.lives <= 0:
+                self.lives = 0
                 self.game_over = True
                 self.message = f"You Lose! The secret word was: {self.chosen_word.upper()}"
 

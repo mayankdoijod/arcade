@@ -93,11 +93,11 @@ class HigherLowerGame:
         self.attempts_remaining -= 1
         hint = ""
         if val > self.num:
-            hint = "Too high"
-            self.message = f"{val} is Too High! Try a lower number."
+            hint = "HIGH"
+            self.message = "HIGH"
         elif val < self.num:
-            hint = "Too low"
-            self.message = f"{val} is Too Low! Try a higher number."
+            hint = "LOW"
+            self.message = "LOW"
         elif val == self.num:
             hint = "You guessed the number"
             self.won = True
@@ -298,11 +298,17 @@ class HangmanGame:
     def guess(self, letter):
         if self.game_over:
             return self.get_state()
+        if letter is None or letter == "null":
+            self.message = "Please enter a valid letter (A-Z)."
+            return self.get_state()
         char = str(letter).lower().strip()
         if not char or len(char) != 1 or not char.isalpha():
-            return {"error": "Please guess a single letter (A-Z)."}
+            self.message = "Please enter a valid letter (A-Z)."
+            return self.get_state()
+        # If letter was already guessed, show friendly message without reducing lives
         if char in self.guessed_letters:
-            return {"error": f"You already guessed '{char.upper()}'."}
+            self.message = f"You already guessed that letter! ('{char.upper()}')"
+            return self.get_state()
         self.guessed_letters.append(char)
         if char in self.chosen_word:
             self.correct_letters.append(char)
@@ -310,7 +316,8 @@ class HangmanGame:
         else:
             self.lives -= 1
             self.message = f"Miss! '{char.upper()}' is not in the word."
-            if self.lives == 0:
+            if self.lives <= 0:
+                self.lives = 0
                 self.game_over = True
                 self.message = f"You Lose! The secret word was: {self.chosen_word.upper()}"
         display = self.get_display()
@@ -618,8 +625,8 @@ def dispatch(game_name, action, payload=None):
         if (isNaN(val) || val < 1 || val > 100) return { error: 'Enter a number between 1 and 100' };
         s.rem--;
         let hint = '';
-        if (val > s.num) { hint = 'Too high'; s.msg = `${val} is Too High! Try a lower number.`; }
-        else if (val < s.num) { hint = 'Too low'; s.msg = `${val} is Too Low! Try a higher number.`; }
+        if (val > s.num) { hint = 'HIGH'; s.msg = 'HIGH'; }
+        else if (val < s.num) { hint = 'LOW'; s.msg = 'LOW'; }
         else { hint = 'You guessed the number'; s.won = true; s.over = true; s.msg = `Brilliant! You guessed ${s.num}!`; }
         s.guesses.push({ guess: val, hint, remaining: s.rem });
         if (!s.won && s.rem <= 0) { s.over = true; s.msg = `You Lose, the correct number was: ${s.num}`; }
@@ -708,19 +715,35 @@ def dispatch(game_name, action, payload=None):
         }
       }
       if (action === 'guess' && !s.over) {
-        const char = String(payload).toUpperCase().trim();
-        if (char && char.length === 1 && !s.guessed.includes(char)) {
-          s.guessed.push(char);
-          if (s.word.includes(char)) {
-            s.correct.push(char);
-            s.msg = `Nice! '${char}' is in the word.`;
+        if (payload === null || payload === undefined || payload === 'null') {
+          s.msg = 'Please enter a valid letter (A-Z).';
+        } else {
+          const char = String(payload).toUpperCase().trim();
+          if (!char || char.length !== 1 || !/^[A-Z]$/.test(char)) {
+            s.msg = 'Please enter a valid letter (A-Z).';
+          } else if (s.guessed.includes(char)) {
+            s.msg = `You already guessed that letter! ('${char}')`;
           } else {
-            s.lives--;
-            s.msg = `Miss! '${char}' is not in the word.`;
-            if (s.lives <= 0) { s.over = true; s.msg = `You Lose! The secret word was: ${s.word}`; }
+            s.guessed.push(char);
+            if (s.word.includes(char)) {
+              s.correct.push(char);
+              s.msg = `Nice! '${char}' is in the word.`;
+            } else {
+              s.lives--;
+              s.msg = `Miss! '${char}' is not in the word.`;
+              if (s.lives <= 0) {
+                s.lives = 0;
+                s.over = true;
+                s.msg = `You Lose! The secret word was: ${s.word}`;
+              }
+            }
+            const disp = s.word.split('').map(l => s.correct.includes(l) ? l : '_');
+            if (!disp.includes('_')) {
+              s.over = true;
+              s.won = true;
+              s.msg = `You win! Congratulations on solving '${s.word}'!`;
+            }
           }
-          const disp = s.word.split('').map(l => s.correct.includes(l) ? l : '_');
-          if (!disp.includes('_')) { s.over = true; s.won = true; s.msg = `You win! Congratulations on solving '${s.word}'!`; }
         }
       }
       return {
@@ -948,8 +971,8 @@ def dispatch(game_name, action, payload=None):
       } else {
         hlHistoryList.innerHTML = state.guesses.map((g, idx) => {
           let cls = 'hint-match';
-          if (g.hint === 'Too high') cls = 'hint-high';
-          else if (g.hint === 'Too low') cls = 'hint-low';
+          if (g.hint === 'HIGH' || g.hint === 'Too high') cls = 'hint-high';
+          else if (g.hint === 'LOW' || g.hint === 'Too low') cls = 'hint-low';
           return `<div class="history-item ${cls}">
             <span>#${idx + 1}: <strong>${g.guess}</strong> (${g.hint})</span>
             <span>${g.remaining} left</span>
@@ -1152,9 +1175,22 @@ def dispatch(game_name, action, payload=None):
     });
   }
 
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener('keydown', async (e) => {
     if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('is-visible')) {
       closeGameCabinet();
+      return;
+    }
+
+    if (activeGame === 'hangman' && modalOverlay && modalOverlay.classList.contains('is-visible')) {
+      if (e.ctrlKey || e.altKey || e.metaKey) return;
+      if (e.key === 'Enter') return;
+      if (e.key.length === 1 && /^[a-zA-Z]$/.test(e.key)) {
+        e.preventDefault();
+        const letter = e.key.toUpperCase();
+        if (hmLetterInput) hmLetterInput.value = '';
+        const state = await runPythonDispatch('hangman', 'guess', letter);
+        renderHangman(state);
+      }
     }
   });
 
@@ -1220,6 +1256,15 @@ def dispatch(game_name, action, payload=None):
       const state = await runPythonDispatch('hangman', 'guess', val);
       hmLetterInput.value = '';
       renderHangman(state);
+    });
+
+    hmLetterInput.addEventListener('input', async () => {
+      const val = hmLetterInput.value.trim();
+      if (val && /^[a-zA-Z]$/.test(val)) {
+        hmLetterInput.value = '';
+        const state = await runPythonDispatch('hangman', 'guess', val);
+        renderHangman(state);
+      }
     });
   }
 
