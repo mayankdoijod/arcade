@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PYTHON ARCADE — Four Classics. One Arcade.</title>
+  
+  <!-- SEO & Social Meta -->
+  <meta name="description" content="Python Arcade is a curated college mini project exploring classic game logic and Python programming through four timeless favourites.">
+  <meta name="keywords" content="Python Arcade, Python mini project, Higher or Lower, Blackjack, Hangman, Stone Paper Scissors, retro arcade, indie gaming magazine">
+  <meta name="author" content="Python Arcade">
+
+  <!-- Favicon (Inline SVG Data URI) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%2317283F'/%3E%3Ctext x='7' y='23' font-family='sans-serif' font-weight='800' font-size='18' fill='%23F2EFE8'%3EPA%3C/text%3E%3Ccircle cx='26' cy='23' r='2.5' fill='%23D66A45'/%3E%3C/svg%3E">
+
+  <!-- Typography: Google Fonts (Manrope, DM Sans, IBM Plex Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+
+  <!-- ======================================================================
+       HEADER & NAVIGATION
+       ====================================================================== -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="nav-wrapper">
+        
+        <!-- Left: Monogram & Wordmark -->
+        <a href="#top" class="brand-link" aria-label="Python Arcade Home">
+          <div class="brand-monogram" aria-hidden="true">PA</div>
+          <div class="brand-text-block">
+            <span class="brand-title">PYTHON ARCADE</span>
+            <span class="brand-sub">COLLEGE MINI PROJECT // ED. 01</span>
+          </div>
+        </a>
+
+        <!-- Right: Desktop Navigation -->
+        <nav class="desktop-nav" aria-label="Main Navigation">
+          <a href="#top" class="nav-link">Home</a>
+          <a href="#games" class="nav-link">Games</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#games" class="btn-play-header">LET'S PLAY ↗</a>
+        </nav>
+
+        <!-- Mobile Hamburger Toggle Button -->
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileDrawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileDrawer" aria-hidden="true">
+    <a href="#top" class="mobile-nav-link">Home <span>01</span></a>
+    <a href="#games" class="mobile-nav-link">Games <span>02</span></a>
+    <a href="#about" class="mobile-nav-link">About <span>03</span></a>
+    <a href="#games" class="btn-primary" style="margin-top: 1rem;">LET'S PLAY ↗</a>
+  </div>
+
+  <main>
+    <!-- ====================================================================
+         HERO SECTION
+         ==================================================================== -->
+    <section class="hero-section" id="hero" aria-labelledby="heroHeadline">
+      <div class="container">
+        <div class="hero-layout">
+          
+          <!-- Hero Left: Typography & Editorial Messaging -->
+          <div class="hero-content">
+            <div class="hero-meta-badge">
+              <span class="mono-tag">FOUR CLASSICS. ONE ARCADE.</span>
+            </div>
+
+            <h1 class="hero-headline" id="heroHeadline">
+              <span class="line-block">LESS SCROLLING.</span>
+              <span class="line-block text-orange">MORE PLAY.</span>
+            </h1>
+
+            <p class="hero-copy">
+              A collection of classic games built with Python. Simple. Fun. Timeless.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#games" class="btn-primary" id="exploreGamesBtn">
+                EXPLORE GAMES ↗
+              </a>
+              <div class="hero-spec-note">
+                PURE PYTHON 3 LOGIC<br>
+                ZERO EXTERNAL PACKAGES
+              </div>
+            </div>
+
+            <!-- Editorial Spec Bar -->
+            <div class="hero-footer-bar">
+              <div class="hero-footer-item">
+                <span class="hero-footer-label">PLATFORM</span>
+                <span class="hero-footer-value">Python Runtime</span>
+              </div>
+              <div class="hero-footer-item">
+                <span class="hero-footer-label">EXPERIENCES</span>
+                <span class="hero-footer-value">4 Curated Titles</span>
+              </div>
+              <div class="hero-footer-item">
+                <span class="hero-footer-label">ISSUE</span>
+                <span class="hero-footer-value">01 // Academic</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Right: Detailed Retro Arcade Cabinet Illustration -->
+          <div class="hero-artwork-wrapper" aria-label="Original Editorial Illustration of a Retro Arcade Cabinet">
+            
+            <!-- Contextual Floating Editorial Annotation Pins -->
+            <div class="editorial-pin pin-screen">CRT PHOSPHOR DISPLAY // 14"</div>
+            <div class="editorial-pin pin-controls">TACTILE MICROSWITCHES</div>
+            <div class="editorial-pin pin-coin">COIN MECH // 25¢ INSERT</div>
+
+            <!-- Arcade Cabinet SVG Artwork -->
+            <svg class="hero-illustration" viewBox="0 0 520 620" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Retro Arcade Cabinet Art">
+              <defs>
+                <!-- CRT Scanlines Pattern -->
+                <pattern id="arcadeScanlines" width="100" height="4" patternUnits="userSpaceOnUse">
+                  <line x1="0" y1="2" x2="100" y2="2" stroke="#17283F" stroke-width="1" stroke-opacity="0.25" />
+                </pattern>
+                
+                <!-- Cabinet Woodgrain & Drop Shadows -->
+                <linearGradient id="cabBodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1F3554" />
+                  <stop offset="100%" stop-color="#122033" />
+                </linearGradient>
+
+                <linearGradient id="marqueeGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#FDFBF7" />
+                  <stop offset="100%" stop-color="#D8C9A7" />
+                </linearGradient>
+
+                <linearGradient id="crtGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#223B5A" />
+                  <stop offset="100%" stop-color="#0F1B2B" />
+                </linearGradient>
+              </defs>
+
+              <!-- Ambient Backdrop Glow & Perspective Floor Shadow -->
+              <ellipse cx="260" cy="590" rx="190" ry="22" fill="#17283F" fill-opacity="0.16" />
+              <ellipse cx="260" cy="590" rx="130" ry="12" fill="#D66A45" fill-opacity="0.12" />
+
+              <!-- Outer Cabinet Shell / Silhouette with Angled Wings -->
+              <path d="M120 70 L400 70 L430 110 L430 250 L460 330 L450 370 L430 380 L430 580 L90 580 L90 380 L70 370 L60 330 L90 250 L90 110 Z" fill="url(#cabBodyGrad)" stroke="#17283F" stroke-width="4" stroke-linejoin="round" />
+
+              <!-- Side Trim & Editorial T-Molding (Warm Sand & Burnt Orange Accent) -->
+              <path d="M116 74 L86 114 L86 248 L56 328 L66 366 L86 376 L86 576" stroke="#D8C9A7" stroke-width="4" stroke-linecap="round" />
+              <path d="M404 74 L434 114 L434 248 L464 328 L454 366 L434 376 L434 576" stroke="#D8C9A7" stroke-width="4" stroke-linecap="round" />
+              <path d="M122 74 L398 74" stroke="#D66A45" stroke-width="3" />
+
+              <!-- Side Graphic Stripes (Geometric Editorial Decals) -->
+              <path d="M96 160 L140 160 L110 320 L86 320 Z" fill="#D8C9A7" fill-opacity="0.35" />
+              <path d="M424 160 L380 160 L410 320 L434 320 Z" fill="#D8C9A7" fill-opacity="0.35" />
+              <polygon points="106,200 135,200 120,290 96,290" fill="#D66A45" fill-opacity="0.8" />
+              <polygon points="414,200 385,200 400,290 424,290" fill="#D66A45" fill-opacity="0.8" />
+
+              <!-- Top Marquee Panel (Header Sign) -->
+              <g id="arcadeMarquee">
+                <!-- Marquee Frame -->
+                <rect x="118" y="80" width="284" height="64" rx="3" fill="#17283F" stroke="#D8C9A7" stroke-width="2" />
+                <!-- Illuminated Faceplate -->
+                <rect x="124" y="86" width="272" height="52" rx="2" fill="url(#marqueeGlow)" />
+                <!-- Marquee Inner Accent Line -->
+                <rect x="128" y="90" width="264" height="44" stroke="#D66A45" stroke-width="1.5" stroke-dasharray="6 3" fill="none" />
+                
+                <!-- Marquee Typography -->
+                <text x="260" y="117" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="20" fill="#17283F" letter-spacing="3.5">PYTHON ARCADE</text>
+                <text x="260" y="129" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="600" font-size="7.5" fill="#D66A45" letter-spacing="2">★ 4-IN-1 RETRO COMPENDIUM ★</text>
+                
+                <!-- Corner Rivets -->
+                <circle cx="123" cy="85" r="2.5" fill="#D8C9A7" />
+                <circle cx="397" cy="85" r="2.5" fill="#D8C9A7" />
+                <circle cx="123" cy="139" r="2.5" fill="#D8C9A7" />
+                <circle cx="397" cy="139" r="2.5" fill="#D8C9A7" />
+              </g>
+
+              <!-- Speaker Grille Slats -->
+              <g id="speakerGrille" stroke="#17283F" stroke-width="2.5" stroke-linecap="round">
+                <line x1="210" y1="156" x2="310" y2="156" />
+                <line x1="220" y1="162" x2="300" y2="162" />
+                <line x1="230" y1="168" x2="290" y2="168" />
+              </g>
+
+              <!-- CRT Monitor Bezel Housing -->
+              <g id="crtMonitor">
+                <!-- Monitor Bezel Surround -->
+                <path d="M128 178 L392 178 L380 326 L140 326 Z" fill="#101C2B" stroke="#697D88" stroke-width="2" />
+                
+                <!-- Curved CRT Glass Screen -->
+                <rect x="144" y="188" width="232" height="126" rx="18" fill="url(#crtGlass)" stroke="#D8C9A7" stroke-width="1.5" />
+                <!-- Scanlines overlay -->
+                <rect x="144" y="188" width="232" height="126" rx="18" fill="url(#arcadeScanlines)" />
+
+                <!-- In-Game CRT Phosphor Artwork (Retro Terminal Game Display) -->
+                <!-- CRT Status Header -->
+                <text x="156" y="206" font-family="'IBM Plex Mono', monospace" font-weight="600" font-size="9" fill="#D8C9A7">SCORE: 09420</text>
+                <text x="364" y="206" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-weight="600" font-size="9" fill="#D66A45">LIVES: ♥♥♥</text>
+
+                <!-- In-Screen Pixelated Maze / Game Representation -->
+                <path d="M160 220 H360 V300 H160 Z" fill="none" stroke="#697D88" stroke-width="1" stroke-dasharray="4 4" stroke-opacity="0.4" />
+                
+                <!-- Snake / Pixel Graphic on Screen -->
+                <path d="M180 250 H240 V270 H300 V240" fill="none" stroke="#D66A45" stroke-width="4" stroke-linecap="square" />
+                <rect x="306" y="236" width="8" height="8" fill="#F2EFE8" />
+                
+                <!-- Arcade Prompt on Screen -->
+                <rect x="195" y="278" width="130" height="16" rx="2" fill="#17283F" fill-opacity="0.85" stroke="#D8C9A7" stroke-width="0.8" />
+                <text x="260" y="289" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="600" font-size="8" fill="#F2EFE8" letter-spacing="1">PRESS START KEY</text>
+                
+                <!-- CRT Screen Glass Reflection Glare -->
+                <path d="M152 196 Q260 210 360 196 L350 216 Q260 228 158 214 Z" fill="#F2EFE8" fill-opacity="0.08" />
+              </g>
+
+              <!-- Control Panel Deck (Slanted Perspective) -->
+              <g id="controlDeck">
+                <!-- Slanted Panel Base -->
+                <polygon points="62,330 458,330 436,380 84,380" fill="#1F3554" stroke="#17283F" stroke-width="2" />
+                <polygon points="66,334 454,334 433,376 87,376" fill="#17283F" />
+                
+                <!-- Player 1 & 2 Start Buttons -->
+                <circle cx="120" cy="346" r="5" fill="#F2EFE8" stroke="#17283F" stroke-width="1.5" />
+                <text x="120" y="360" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="#D8C9A7">1P</text>
+
+                <circle cx="140" cy="346" r="5" fill="#F2EFE8" stroke="#17283F" stroke-width="1.5" />
+                <text x="140" y="360" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="#D8C9A7">2P</text>
+
+                <!-- Classic Ball-top Joystick -->
+                <!-- Joystick Base Washer -->
+                <ellipse cx="200" cy="360" rx="14" ry="7" fill="#0F1B2B" stroke="#697D88" stroke-width="1.5" />
+                <!-- Joystick Shaft -->
+                <line x1="200" y1="360" x2="204" y2="336" stroke="#D8C9A7" stroke-width="4.5" stroke-linecap="round" />
+                <!-- Joystick Ball-Top (Burnt Orange) -->
+                <circle cx="205" cy="330" r="12" fill="#D66A45" stroke="#17283F" stroke-width="2" />
+                <!-- Ball Highlight -->
+                <circle cx="202" cy="327" r="3.5" fill="#F2EFE8" fill-opacity="0.6" />
+
+                <!-- Action Buttons Array (6-Button Layout) -->
+                <!-- Top Row -->
+                <circle cx="280" cy="348" r="8" fill="#D66A45" stroke="#17283F" stroke-width="2" />
+                <circle cx="310" cy="346" r="8" fill="#D8C9A7" stroke="#17283F" stroke-width="2" />
+                <circle cx="340" cy="348" r="8" fill="#697D88" stroke="#17283F" stroke-width="2" />
+                <!-- Bottom Row -->
+                <circle cx="275" cy="365" r="8" fill="#D8C9A7" stroke="#17283F" stroke-width="2" />
+                <circle cx="305" cy="363" r="8" fill="#697D88" stroke="#17283F" stroke-width="2" />
+                <circle cx="335" cy="365" r="8" fill="#D66A45" stroke="#17283F" stroke-width="2" />
+              </g>
+
+              <!-- Lower Cabinet & Coin Door Assembly -->
+              <g id="coinDoor">
+                <!-- Coin Door Recessed Frame -->
+                <rect x="175" y="415" width="170" height="145" rx="4" fill="#132133" stroke="#697D88" stroke-width="2" />
+                <!-- Inner Door Faceplate -->
+                <rect x="185" y="425" width="150" height="125" rx="2" fill="#17283F" stroke="#D8C9A7" stroke-width="1.5" />
+                
+                <!-- Twin Coin Insert Slots (25¢) -->
+                <!-- Left Slot -->
+                <rect x="205" y="442" width="40" height="34" rx="2" fill="#0F1B2B" stroke="#D66A45" stroke-width="1.5" />
+                <line x1="225" y1="447" x2="225" y2="459" stroke="#D8C9A7" stroke-width="2.5" stroke-linecap="round" />
+                <rect x="215" y="463" width="20" height="8" rx="1" fill="#D66A45" />
+                <text x="225" y="469" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" font-weight="700" fill="#F2EFE8">25¢</text>
+
+                <!-- Right Slot -->
+                <rect x="275" y="442" width="40" height="34" rx="2" fill="#0F1B2B" stroke="#D66A45" stroke-width="1.5" />
+                <line x1="295" y1="447" x2="295" y2="459" stroke="#D8C9A7" stroke-width="2.5" stroke-linecap="round" />
+                <rect x="285" y="463" width="20" height="8" rx="1" fill="#D66A45" />
+                <text x="295" y="469" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" font-weight="700" fill="#F2EFE8">25¢</text>
+
+                <!-- Coin Return Flaps -->
+                <rect x="210" y="492" width="30" height="26" fill="#0F1B2B" stroke="#697D88" stroke-width="1" />
+                <rect x="280" y="492" width="30" height="26" fill="#0F1B2B" stroke="#697D88" stroke-width="1" />
+                
+                <!-- Keyhole Lock -->
+                <circle cx="260" cy="433" r="4" fill="#D8C9A7" />
+                <circle cx="260" cy="433" r="1.5" fill="#17283F" />
+              </g>
+
+              <!-- Hand-Drawn Editorial Accents & Measurement Marks -->
+              <!-- Curved annotation arrow pointing to coin door -->
+              <path d="M125 490 Q150 495 180 475" fill="none" stroke="#D66A45" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3" />
+              <polygon points="185,472 178,479 174,472" fill="#D66A45" />
+
+              <!-- Editorial Registration Marks (Crosshairs) -->
+              <g stroke="#697D88" stroke-width="1.5">
+                <line x1="45" y1="70" x2="55" y2="70" />
+                <line x1="50" y1="65" x2="50" y2="75" />
+                
+                <line x1="465" y1="70" x2="475" y2="70" />
+                <line x1="470" y1="65" x2="470" y2="75" />
+
+                <line x1="45" y1="580" x2="55" y2="580" />
+                <line x1="50" y1="575" x2="50" y2="585" />
+
+                <line x1="465" y1="580" x2="475" y2="580" />
+                <line x1="470" y1="575" x2="470" y2="585" />
+              </g>
+
+              <!-- Technical Chassis Stamp -->
+              <text x="260" y="570" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="7" fill="#697D88" letter-spacing="1.5">SPEC: PYTHON-V3 // CHASSIS NO. PA-2026-X</text>
+            </svg>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Rule Divider -->
+    <div class="container">
+      <div class="editorial-rule"></div>
+    </div>
+
+    <!-- ====================================================================
+         GAME SHOWCASE — THE COLLECTION
+         Asymmetrical, Image-Led Editorial Gallery
+         ==================================================================== -->
+    <section class="editorial-section" id="games" aria-labelledby="collectionHeadline">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <header class="section-header">
+          <div class="section-header-top">
+            <div>
+              <span class="mono-tag" style="margin-bottom: 0.5rem;">THE COLLECTION / 001</span>
+              <h2 class="section-headline" id="collectionHeadline">CHOOSE YOUR CHALLENGE.</h2>
+              <p class="section-deck">Four familiar favourites. Four different ways to play.</p>
+            </div>
+            <div class="section-index-badge">
+              INDEX 01 — 04 // INTERACTIVE PREVIEW
+            </div>
+          </div>
+        </header>
+
+        <!-- Asymmetric Open Gallery -->
+        <div class="games-collection">
+
+          <!-- ----------------------------------------------------------------
+               GAME 01: HIGHER OR LOWER (Large Expressive Showcase)
+               ---------------------------------------------------------------- -->
+          <article class="game-entry showcase-feature-higher-lower" data-game="higher_lower" tabindex="0" role="button" aria-label="Explore Higher or Lower game">
+            
+            <!-- Left: Artwork Stage -->
+            <div class="hl-artwork-stage">
+              <svg class="hl-illustration" viewBox="0 0 560 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration for Higher or Lower game featuring floating number tiles, question mark, and probability motifs">
+                <!-- Subtle grid background -->
+                <rect x="20" y="20" width="520" height="360" rx="4" fill="#F2EFE8" stroke="#D8C9A7" stroke-width="1.5" stroke-dasharray="6 4" />
+                
+                <!-- Tile 1: Left Number Tile (17) -->
+                <g id="tileSeventeen">
+                  <rect x="60" y="140" width="130" height="150" rx="4" fill="#D8C9A7" stroke="#17283F" stroke-width="2.5" />
+                  <rect x="66" y="146" width="118" height="138" fill="#F2EFE8" stroke="#697D88" stroke-width="1" />
+                  <text x="125" y="225" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="52" fill="#17283F">17</text>
+                  <text x="125" y="250" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#697D88">VALUE A</text>
+                </g>
+
+                <!-- Tile 2: Center Giant Question Mark Tile (Unknown Mystery) -->
+                <g id="tileQuestion">
+                  <!-- Tile Shadow -->
+                  <rect x="225" y="75" width="160" height="200" rx="6" fill="#17283F" fill-opacity="0.1" />
+                  <!-- Tile Body -->
+                  <rect x="215" y="65" width="160" height="200" rx="6" fill="#17283F" stroke="#17283F" stroke-width="3" />
+                  <rect x="223" y="73" width="144" height="184" rx="3" fill="#F2EFE8" />
+                  
+                  <!-- Embossed Question Mark in Burnt Orange -->
+                  <text x="295" y="195" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="110" fill="#D66A45">?</text>
+                  
+                  <!-- Mystery Tile Header & Footer -->
+                  <text x="295" y="98" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="600" font-size="9" fill="#17283F" letter-spacing="1">NEXT VALUE: HIDDEN</text>
+                  <line x1="240" y1="106" x2="350" y2="106" stroke="#D66A45" stroke-width="1.5" />
+                  <text x="295" y="242" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8.5" fill="#697D88">CAN YOU GUESS?</text>
+                </g>
+
+                <!-- Tile 3: Right Elevated Number Tile (84) -->
+                <g id="tileEightyFour">
+                  <rect x="390" y="110" width="120" height="140" rx="4" fill="#697D88" stroke="#17283F" stroke-width="2.5" />
+                  <rect x="396" y="116" width="108" height="128" fill="#17283F" />
+                  <text x="450" y="195" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="48" fill="#F2EFE8">84</text>
+                  <text x="450" y="222" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8.5" fill="#D8C9A7">VALUE B</text>
+                </g>
+
+                <!-- Hand-Drawn Directional Editorial Arrows -->
+                <!-- HIGHER Arrow (Upward, Burnt Orange) -->
+                <g id="arrowHigher">
+                  <path d="M185 90 L210 50 M210 50 L185 45 M210 50 L215 75" stroke="#D66A45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                  <rect x="95" y="38" width="85" height="22" rx="2" fill="#D66A45" />
+                  <text x="137" y="53" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="700" font-size="10" fill="#F2EFE8">▲ HIGHER</text>
+                </g>
+
+                <!-- LOWER Arrow (Downward, Slate Blue) -->
+                <g id="arrowLower">
+                  <path d="M380 290 L405 330 M405 330 L380 335 M405 330 L410 305" stroke="#697D88" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                  <rect x="420" y="320" width="80" height="22" rx="2" fill="#17283F" />
+                  <text x="460" y="335" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="700" font-size="10" fill="#F2EFE8">▼ LOWER</text>
+                </g>
+
+                <!-- Numerical Scale & Gauge Markings -->
+                <g id="scaleBar">
+                  <line x1="80" y1="335" x2="350" y2="335" stroke="#17283F" stroke-width="2" />
+                  <line x1="80" y1="328" x2="80" y2="342" stroke="#17283F" stroke-width="2" />
+                  <line x1="147" y1="330" x2="147" y2="340" stroke="#17283F" stroke-width="1.5" />
+                  <line x1="215" y1="326" x2="215" y2="344" stroke="#D66A45" stroke-width="2.5" />
+                  <line x1="282" y1="330" x2="282" y2="340" stroke="#17283F" stroke-width="1.5" />
+                  <line x1="350" y1="328" x2="350" y2="342" stroke="#17283F" stroke-width="2" />
+                  
+                  <text x="80" y="356" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#697D88">00</text>
+                  <text x="215" y="358" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" font-weight="700" fill="#D66A45">50% PROBABILITY</text>
+                  <text x="350" y="356" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#697D88">100</text>
+                </g>
+
+                <!-- Registration Mark & Stamped Notes -->
+                <circle cx="50" cy="50" r="12" fill="none" stroke="#D8C9A7" stroke-width="1.5" />
+                <line x1="50" y1="34" x2="50" y2="66" stroke="#D8C9A7" stroke-width="1.5" />
+                <line x1="34" y1="50" x2="66" y2="50" stroke="#D8C9A7" stroke-width="1.5" />
+                
+                <text x="495" y="380" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="7" fill="#697D88">FIG. 1.1 — PROBABILITY MATRIX</text>
+              </svg>
+            </div>
+
+            <!-- Right: Typographic Composition -->
+            <div class="hl-content-block">
+              <span class="game-label">01 / NUMBER GAME</span>
+              <h3 class="game-title">Higher or Lower</h3>
+              <p class="game-subtitle">Pick a number. Trust your instincts.</p>
+              <p class="game-desc">
+                A duel of pure numerical intuition and mathematical nerve. The rules are ancient, the tension immediate: calculate the odds, second-guess your initial gut feeling, and predict the next value.
+              </p>
+              <div class="game-cta">
+                VIEW GAME ↗
+              </div>
+            </div>
+
+          </article>
+
+          <!-- ----------------------------------------------------------------
+               ASYMMETRIC COMPLEMENTARY PAIR: GAMES 02 & 03
+               ---------------------------------------------------------------- -->
+          <div class="showcase-asymmetric-row">
+
+            <!-- GAME 02: BLACKJACK -->
+            <article class="game-entry showcase-blackjack" data-game="blackjack" tabindex="0" role="button" aria-label="Explore Blackjack game">
+              <div class="game-text-top">
+                <span class="game-label">02 / CARD GAME</span>
+                <h3 class="game-title">Blackjack</h3>
+                <p class="game-subtitle">Play your hand.</p>
+              </div>
+
+              <!-- Artwork Stage -->
+              <div class="blackjack-artwork-stage">
+                <svg class="blackjack-illustration" viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sophisticated graphic illustration of overlapping Ace of Spades card and gaming chips">
+                  <!-- Table Felt Radial Vignette -->
+                  <ellipse cx="210" cy="180" rx="190" ry="140" fill="#17283F" fill-opacity="0.06" />
+
+                  <!-- Underlapping Card (Ten of Diamonds / Face Card) -->
+                  <g id="underCard" transform="rotate(-14 180 150)">
+                    <rect x="130" y="50" width="130" height="190" rx="8" fill="#F2EFE8" stroke="#17283F" stroke-width="2.5" />
+                    <rect x="138" y="58" width="114" height="174" rx="4" fill="#F2EFE8" stroke="#D8C9A7" stroke-width="1" />
+                    <!-- Red / Burnt Orange Diamond Suit -->
+                    <text x="152" y="80" font-family="'Manrope', sans-serif" font-weight="800" font-size="20" fill="#D66A45">10</text>
+                    <path d="M152 90 L158 98 L152 106 L146 98 Z" fill="#D66A45" />
+                    <!-- Center Decorative Diamond Motif -->
+                    <path d="M195 125 L210 145 L195 165 L180 145 Z" fill="#D66A45" fill-opacity="0.85" />
+                  </g>
+
+                  <!-- Prominent Card: Ace of Spades (Masterpiece Editorial Card) -->
+                  <g id="aceCard" transform="rotate(7 230 160)">
+                    <!-- Card Shadow -->
+                    <rect x="180" y="50" width="140" height="205" rx="8" fill="#17283F" fill-opacity="0.15" />
+                    <!-- Card Body -->
+                    <rect x="175" y="45" width="140" height="205" rx="8" fill="#FDFBF7" stroke="#17283F" stroke-width="3" />
+                    <rect x="183" y="53" width="124" height="189" rx="5" fill="#FDFBF7" stroke="#697D88" stroke-width="0.75" />
+
+                    <!-- Top Left Rank & Suit -->
+                    <text x="195" y="80" font-family="'Manrope', sans-serif" font-weight="800" font-size="26" fill="#17283F">A</text>
+                    <!-- Small Spade Suit -->
+                    <path d="M200 90 C197 86 193 88 193 91 C193 94 200 99 200 99 C200 99 207 94 207 91 C207 88 203 86 200 90 Z M200 97 L202 102 L198 102 Z" fill="#17283F" />
+
+                    <!-- Center Geometric Linework Spade Symbol -->
+                    <g transform="translate(245, 145) scale(1.6)">
+                      <!-- Spade Icon with Linework Hatching -->
+                      <path d="M0 -22 C-6 -10 -18 -4 -18 7 C-18 16 -7 20 0 11 C7 20 18 16 18 7 C18 -4 6 -10 0 -22 Z" fill="#17283F" />
+                      <path d="M0 8 L-4 22 L4 22 Z" fill="#17283F" />
+                      <!-- Internal Spade Inlay Geometry -->
+                      <path d="M0 -15 C-4 -6 -12 -2 -12 6 C-12 12 -5 14 0 7 C5 14 12 12 12 6 C12 -2 4 -6 0 -15 Z" fill="#FDFBF7" />
+                      <circle cx="0" cy="5" r="3" fill="#D66A45" />
+                    </g>
+
+                    <!-- Bottom Right Inverted Rank & Suit -->
+                    <g transform="rotate(180 245 147)">
+                      <text x="195" y="80" font-family="'Manrope', sans-serif" font-weight="800" font-size="26" fill="#17283F">A</text>
+                    </g>
+                  </g>
+
+                  <!-- Understated Stacking Casino Tokens / Chips -->
+                  <g id="chipsStack" transform="translate(70, 210)">
+                    <!-- Chip 1 (Bottom) -->
+                    <ellipse cx="60" cy="65" rx="36" ry="14" fill="#697D88" stroke="#17283F" stroke-width="2" />
+                    <!-- Edge ridges -->
+                    <line x1="32" y1="63" x2="32" y2="67" stroke="#F2EFE8" stroke-width="3" />
+                    <line x1="88" y1="63" x2="88" y2="67" stroke="#F2EFE8" stroke-width="3" />
+
+                    <!-- Chip 2 (Middle) -->
+                    <ellipse cx="60" cy="53" rx="36" ry="14" fill="#D8C9A7" stroke="#17283F" stroke-width="2" />
+                    <line x1="32" y1="51" x2="32" y2="55" stroke="#17283F" stroke-width="3" />
+                    <line x1="88" y1="51" x2="88" y2="55" stroke="#17283F" stroke-width="3" />
+
+                    <!-- Chip 3 (Top) -->
+                    <ellipse cx="60" cy="41" rx="36" ry="14" fill="#17283F" stroke="#17283F" stroke-width="2" />
+                    <ellipse cx="60" cy="41" rx="26" ry="10" fill="#D66A45" />
+                    <text x="60" y="45" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="700" font-size="9" fill="#F2EFE8">21</text>
+                  </g>
+
+                  <!-- Card Suits Ribbon Border -->
+                  <text x="390" y="310" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="12" fill="#697D88" letter-spacing="4">♠ ♥ ♦ ♣</text>
+                </svg>
+              </div>
+
+              <div class="game-cta">
+                VIEW GAME ↗
+              </div>
+            </article>
+
+            <!-- GAME 03: HANGMAN -->
+            <article class="game-entry showcase-hangman" data-game="hangman" tabindex="0" role="button" aria-label="Explore Hangman game">
+              <div class="game-text-top">
+                <span class="game-label">03 / WORD GAME</span>
+                <h3 class="game-title">Hangman</h3>
+                <p class="game-subtitle">Find the hidden word.</p>
+              </div>
+
+              <!-- Artwork Stage -->
+              <div class="hangman-artwork-stage">
+                <svg class="hangman-illustration" viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Editorial graphic illustration of letterpress tiles, gallows frame motif, and missing-letter underscores">
+                  <!-- Blueprint Background Grid -->
+                  <rect x="25" y="25" width="370" height="290" rx="3" fill="#FDFBF7" stroke="#D8C9A7" stroke-width="1.5" />
+                  <line x1="25" y1="85" x2="395" y2="85" stroke="#D8C9A7" stroke-dasharray="3 3" />
+                  <line x1="25" y1="235" x2="395" y2="235" stroke="#D8C9A7" stroke-dasharray="3 3" />
+
+                  <!-- Minimalist Modernist Line-Art Gallows Frame Motif -->
+                  <g id="gallowsFrame" stroke="#17283F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Base Foundation Beam -->
+                    <line x1="60" y1="215" x2="150" y2="215" stroke-width="4" />
+                    <!-- Vertical Timber Post -->
+                    <line x1="105" y1="215" x2="105" y2="65" stroke-width="3.5" />
+                    <!-- Horizontal Top Beam -->
+                    <line x1="103" y1="65" x2="225" y2="65" stroke-width="3.5" />
+                    <!-- 45-degree Diagonal Support Strut -->
+                    <line x1="105" y1="100" x2="140" y2="65" stroke-width="2.5" />
+                    <!-- Refined Hanging Loop Cord (Non-graphic, abstract) -->
+                    <line x1="210" y1="67" x2="210" y2="100" stroke="#D66A45" stroke-width="2" stroke-dasharray="4 2" />
+                    <circle cx="210" cy="115" r="14" fill="none" stroke="#D66A45" stroke-width="2" />
+                  </g>
+
+                  <!-- Woodblock Letter Tiles: P Y T H O N -->
+                  <g id="letterTiles" transform="translate(60, 248)">
+                    <!-- Tile 1: P -->
+                    <rect x="0" y="0" width="42" height="48" rx="2" fill="#17283F" stroke="#17283F" stroke-width="2" />
+                    <rect x="3" y="3" width="36" height="42" fill="#F2EFE8" />
+                    <text x="21" y="32" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="22" fill="#17283F">P</text>
+
+                    <!-- Tile 2: Y -->
+                    <rect x="50" y="0" width="42" height="48" rx="2" fill="#17283F" stroke="#17283F" stroke-width="2" />
+                    <rect x="53" y="3" width="36" height="42" fill="#F2EFE8" />
+                    <text x="71" y="32" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="22" fill="#17283F">Y</text>
+
+                    <!-- Tile 3: T -->
+                    <rect x="100" y="0" width="42" height="48" rx="2" fill="#17283F" stroke="#17283F" stroke-width="2" />
+                    <rect x="103" y="3" width="36" height="42" fill="#F2EFE8" />
+                    <text x="121" y="32" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="22" fill="#17283F">T</text>
+
+                    <!-- Tile 4: H -->
+                    <rect x="150" y="0" width="42" height="48" rx="2" fill="#17283F" stroke="#17283F" stroke-width="2" />
+                    <rect x="153" y="3" width="36" height="42" fill="#F2EFE8" />
+                    <text x="171" y="32" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="22" fill="#17283F">H</text>
+
+                    <!-- Tile 5: O -->
+                    <rect x="200" y="0" width="42" height="48" rx="2" fill="#D66A45" stroke="#17283F" stroke-width="2" />
+                    <rect x="203" y="3" width="36" height="42" fill="#D66A45" />
+                    <text x="221" y="32" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="22" fill="#F2EFE8">O</text>
+
+                    <!-- Tile 6: N -->
+                    <rect x="250" y="0" width="42" height="48" rx="2" fill="#17283F" stroke="#17283F" stroke-width="2" />
+                    <rect x="253" y="3" width="36" height="42" fill="#F2EFE8" />
+                    <text x="271" y="32" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="22" fill="#17283F">N</text>
+                  </g>
+
+                  <!-- Missing Letter Underscores & Chalk Dashes -->
+                  <g id="letterSlots" stroke="#D66A45" stroke-width="3" stroke-linecap="round">
+                    <line x1="245" y1="165" x2="265" y2="165" />
+                    <line x1="275" y1="165" x2="295" y2="165" />
+                    <line x1="305" y1="165" x2="325" y2="165" />
+                    <line x1="335" y1="165" x2="355" y2="165" />
+                    <text x="255" y="155" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="16" fill="#17283F" stroke="none">A</text>
+                    <text x="315" y="155" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="16" fill="#17283F" stroke="none">E</text>
+                  </g>
+
+                  <!-- Editorial Hand-drawn annotations & Crossed-Out Letters -->
+                  <g id="incorrectLetters">
+                    <text x="245" y="110" font-family="'IBM Plex Mono', monospace" font-size="13" fill="#697D88">USED: </text>
+                    <text x="290" y="110" font-family="'IBM Plex Mono', monospace" font-size="13" font-weight="700" fill="#D66A45">Q  X  Z</text>
+                    <!-- Slashes across bad letters -->
+                    <line x1="288" y1="113" x2="298" y2="99" stroke="#17283F" stroke-width="1.5" />
+                    <line x1="304" y1="113" x2="314" y2="99" stroke="#17283F" stroke-width="1.5" />
+                    <line x1="320" y1="113" x2="330" y2="99" stroke="#17283F" stroke-width="1.5" />
+                  </g>
+
+                  <!-- Pencil Margin Note -->
+                  <text x="245" y="195" font-family="'IBM Plex Mono', monospace" font-style="italic" font-size="8.5" fill="#697D88">"6 TRIES REMAINING"</text>
+                </svg>
+              </div>
+
+              <div class="game-cta">
+                VIEW GAME ↗
+              </div>
+            </article>
+
+          </div>
+
+          <!-- ----------------------------------------------------------------
+               GAME 04: STONE PAPER SCISSORS (Horizontal Panoramic Showcase)
+               ---------------------------------------------------------------- -->
+          <article class="game-entry showcase-stone-paper-scissors" data-game="stone_paper_scissors" tabindex="0" role="button" aria-label="Explore Stone Paper Scissors game">
+            
+            <div class="sps-header-block">
+              <div>
+                <span class="game-label">04 / QUICK MATCH</span>
+                <h3 class="game-title">Stone Paper Scissors</h3>
+                <p class="game-subtitle">Make your move.</p>
+              </div>
+              <div class="game-cta">
+                VIEW GAME ↗
+              </div>
+            </div>
+
+            <!-- Panoramic Artwork Stage: 3 Distinct Elements in Harmonic Triad -->
+            <div class="sps-artwork-stage">
+              <svg class="sps-illustration" viewBox="0 0 940 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Editorial illustration of Stone, Paper, and a recognized hand making the two-finger scissors gesture in a cyclic triad">
+                <!-- Panoramic Editorial Framing -->
+                <rect x="15" y="15" width="910" height="290" rx="4" fill="#FDFBF7" stroke="#D8C9A7" stroke-width="1.5" />
+                <line x1="315" y1="15" x2="315" y2="305" stroke="#D8C9A7" stroke-dasharray="4 4" />
+                <line x1="625" y1="15" x2="625" y2="305" stroke="#D8C9A7" stroke-dasharray="4 4" />
+
+                <!-- ==================== ELEMENT 1: STONE (Left Panel) ==================== -->
+                <g id="elementStone" transform="translate(40, 40)">
+                  <text x="125" y="24" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="600" font-size="10" fill="#697D88" letter-spacing="1.5">01 // THE STONE</text>
+                  
+                  <!-- Chiseled Mineral Rock with Geometric Facets & Contour Lines -->
+                  <g id="rockBody" transform="translate(25, 45)">
+                    <!-- Rock Shadow -->
+                    <ellipse cx="100" cy="155" rx="75" ry="14" fill="#17283F" fill-opacity="0.12" />
+                    
+                    <!-- Facet 1: Base Shadow Body -->
+                    <polygon points="30,120 70,145 140,148 175,115 155,70 110,40 50,60" fill="#17283F" stroke="#17283F" stroke-width="2.5" />
+                    <!-- Facet 2: Light Top Plane -->
+                    <polygon points="50,60 110,40 145,55 90,85 45,75" fill="#D8C9A7" stroke="#17283F" stroke-width="2" />
+                    <!-- Facet 3: Front Facing Plane -->
+                    <polygon points="45,75 90,85 145,55 155,70 125,120 65,110" fill="#697D88" stroke="#17283F" stroke-width="2" />
+                    <!-- Facet 4: Bottom Wedge -->
+                    <polygon points="65,110 125,120 140,148 70,145" fill="#1A2D47" stroke="#17283F" stroke-width="2" />
+                    
+                    <!-- Surface Texture & Contour Hatching Lines -->
+                    <line x1="80" y1="92" x2="115" y2="108" stroke="#F2EFE8" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="75" y1="98" x2="105" y2="114" stroke="#F2EFE8" stroke-width="1.5" stroke-linecap="round" />
+                    <circle cx="100" cy="70" r="2" fill="#D66A45" />
+                  </g>
+
+                  <text x="125" y="235" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="15" fill="#17283F">SOLID & UNYIELDING</text>
+                </g>
+
+                <!-- Dynamic Burnt Orange Curved Arrow 1: Rock Beats Scissors -->
+                <g id="arrowRockToScissors" transform="translate(290, 140)">
+                  <path d="M0 0 Q30 -40 55 -15" fill="none" stroke="#D66A45" stroke-width="2.5" stroke-linecap="round" />
+                  <polygon points="57,-12 56,-22 47,-17" fill="#D66A45" />
+                  <text x="25" y="-35" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" font-weight="700" fill="#D66A45">CRUSHES</text>
+                </g>
+
+                <!-- ==================== ELEMENT 2: SCISSORS HAND (Center Panel) ==================== -->
+                <!-- An Authentic Human Hand Making the Two-Finger Scissors Gesture -->
+                <g id="elementScissorsHand" transform="translate(350, 40)">
+                  <text x="120" y="24" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="600" font-size="10" fill="#D66A45" letter-spacing="1.5">02 // THE SCISSORS</text>
+                  
+                  <g id="handGesture" transform="translate(30, 45)">
+                    <!-- Palm & Wrist Base Shadow -->
+                    <ellipse cx="85" cy="155" rx="60" ry="12" fill="#17283F" fill-opacity="0.12" />
+
+                    <!-- Sleeve Cuff / Wrist Section -->
+                    <rect x="58" y="130" width="54" height="24" rx="3" fill="#17283F" stroke="#17283F" stroke-width="2" />
+                    <line x1="64" y1="136" x2="106" y2="136" stroke="#D8C9A7" stroke-width="1.5" />
+
+                    <!-- Human Palm Silhouette -->
+                    <path d="M60 130 C55 105 58 90 70 82 C76 78 84 80 88 88 C94 80 102 80 108 85 C116 92 118 108 112 130 Z" fill="#F2EFE8" stroke="#17283F" stroke-width="3" stroke-linejoin="round" />
+
+                    <!-- Curled Ring & Pinky Fingers (Held Down by Thumb) -->
+                    <path d="M85 88 C85 102 96 102 96 90" fill="#D8C9A7" stroke="#17283F" stroke-width="2.5" />
+                    <path d="M96 90 C96 104 108 104 108 92" fill="#D8C9A7" stroke="#17283F" stroke-width="2.5" />
+                    <!-- Curled Thumb Across Fingers -->
+                    <path d="M64 96 C72 96 82 98 88 104 C94 108 86 116 74 114 Z" fill="#E4DEC8" stroke="#17283F" stroke-width="2.5" />
+
+                    <!-- Two Extended Fingers in Sharp "V" Gesture (Scissors) -->
+                    <!-- Finger 1: Index Finger (Extended Left-Upward) -->
+                    <path d="M68 84 L46 22 C44 16 52 12 56 16 L80 78 Z" fill="#FDFBF7" stroke="#17283F" stroke-width="3" stroke-linejoin="round" />
+                    <!-- Finger 1 Knuckle & Nail Detail -->
+                    <path d="M50 20 L54 26" stroke="#D66A45" stroke-width="2" stroke-linecap="round" />
+                    <line x1="60" y1="48" x2="68" y2="52" stroke="#697D88" stroke-width="1.5" />
+
+                    <!-- Finger 2: Middle Finger (Extended Right-Upward) -->
+                    <path d="M82 78 L98 14 C100 8 108 10 108 16 L94 82 Z" fill="#FDFBF7" stroke="#17283F" stroke-width="3" stroke-linejoin="round" />
+                    <!-- Finger 2 Knuckle & Nail Detail -->
+                    <path d="M102 14 L104 22" stroke="#D66A45" stroke-width="2" stroke-linecap="round" />
+                    <line x1="92" y1="44" x2="98" y2="46" stroke="#697D88" stroke-width="1.5" />
+
+                    <!-- Scissors Action "Snip" Motion Marks in Burnt Orange -->
+                    <path d="M66 6 L78 18" stroke="#D66A45" stroke-width="2" stroke-linecap="round" />
+                    <path d="M86 6 L74 18" stroke="#D66A45" stroke-width="2" stroke-linecap="round" />
+                  </g>
+
+                  <text x="120" y="235" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="15" fill="#17283F">TACTICAL PRECISION</text>
+                </g>
+
+                <!-- Dynamic Burnt Orange Curved Arrow 2: Scissors Cuts Paper -->
+                <g id="arrowScissorsToPaper" transform="translate(600, 140)">
+                  <path d="M0 0 Q30 -40 55 -15" fill="none" stroke="#D66A45" stroke-width="2.5" stroke-linecap="round" />
+                  <polygon points="57,-12 56,-22 47,-17" fill="#D66A45" />
+                  <text x="25" y="-35" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" font-weight="700" fill="#D66A45">CUTS</text>
+                </g>
+
+                <!-- ==================== ELEMENT 3: PAPER (Right Panel) ==================== -->
+                <g id="elementPaper" transform="translate(660, 40)">
+                  <text x="125" y="24" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="600" font-size="10" fill="#697D88" letter-spacing="1.5">03 // THE PAPER</text>
+                  
+                  <!-- Folded Deckle-Edge Sheet of Paper with Origami Fold -->
+                  <g id="paperSheet" transform="translate(35, 45)">
+                    <!-- Floating Paper Shadow -->
+                    <polygon points="32,24 142,24 162,142 42,146" fill="#17283F" fill-opacity="0.1" />
+
+                    <!-- Main Paper Body with Folded Top-Right Corner -->
+                    <polygon points="30,20 120,20 150,50 150,140 30,140" fill="#FDFBF7" stroke="#17283F" stroke-width="2.5" stroke-linejoin="round" />
+                    <!-- Folded Corner Flap -->
+                    <polygon points="120,20 120,50 150,50" fill="#D8C9A7" stroke="#17283F" stroke-width="2.5" />
+                    
+                    <!-- Inner Grid Lines & Content Marks on Paper -->
+                    <line x1="45" y1="40" x2="105" y2="40" stroke="#697D88" stroke-width="2" stroke-linecap="round" />
+                    <line x1="45" y1="60" x2="135" y2="60" stroke="#D8C9A7" stroke-width="1.5" />
+                    <line x1="45" y1="80" x2="135" y2="80" stroke="#D8C9A7" stroke-width="1.5" />
+                    <line x1="45" y1="100" x2="135" y2="100" stroke="#D8C9A7" stroke-width="1.5" />
+                    <line x1="45" y1="120" x2="100" y2="120" stroke="#D66A45" stroke-width="2" stroke-linecap="round" />
+
+                    <!-- Red Stamp Accent -->
+                    <rect x="108" y="105" width="28" height="18" rx="1" fill="none" stroke="#D66A45" stroke-width="1.5" />
+                    <text x="122" y="117" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" font-weight="700" fill="#D66A45">RULE</text>
+                  </g>
+
+                  <text x="125" y="235" text-anchor="middle" font-family="'Manrope', sans-serif" font-weight="800" font-size="15" fill="#17283F">SWEEPING COVER</text>
+                </g>
+
+                <!-- Dynamic Bottom Return Arrow: Paper Covers Rock -->
+                <g id="arrowPaperToRock">
+                  <path d="M720 280 C500 320 400 320 220 280" fill="none" stroke="#17283F" stroke-width="2" stroke-dasharray="6 4" />
+                  <polygon points="214,281 224,276 226,286" fill="#17283F" />
+                  <text x="470" y="306" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" font-weight="700" fill="#17283F">◀ THE TRIAD IS COMPLETE: PAPER COVERS STONE ◀</text>
+                </g>
+
+              </svg>
+            </div>
+
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Rule Divider -->
+    <div class="container">
+      <div class="editorial-rule"></div>
+    </div>
+
+    <!-- ====================================================================
+         ABOUT SECTION
+         Distinctive Editorial Note & Logic Architecture
+         ==================================================================== -->
+    <section class="editorial-section about-section" id="about" aria-labelledby="aboutHeadline">
+      <div class="container">
+        <div class="about-layout">
+          
+          <!-- Left: Editorial Essay & Philosophy -->
+          <div class="about-editorial-text">
+            <span class="mono-tag" style="margin-bottom: 0.5rem;">PROJECT CURATION // 2026</span>
+            <h2 class="about-headline" id="aboutHeadline">A SMALL PROJECT.<br>A BIGGER REASON.</h2>
+            
+            <p class="about-lead">
+              Python Arcade is a college mini project exploring Python through four familiar games. Each game has its own implementation, brought together under one visual identity.
+            </p>
+
+            <p class="about-body-copy">
+              In an era dominated by sprawling enterprise systems and automated template generation, there remains profound beauty in fundamental computer science. This collection celebrates the core principles of algorithmic problem-solving: game loops, state evaluation, randomness, condition branching, and textual interaction.
+            </p>
+
+            <!-- Two-Column Editorial Pillars -->
+            <div class="about-pillars">
+              <div class="pillar-item">
+                <span class="pillar-number">[ 01 ]</span>
+                <h4 class="pillar-title">Modular Architecture</h4>
+                <p class="pillar-desc">
+                  Each title exists in its own isolated Python directory, maintaining clean separation of concerns.
+                </p>
+              </div>
+
+              <div class="pillar-item">
+                <span class="pillar-number">[ 02 ]</span>
+                <h4 class="pillar-title">Zero Bloat</h4>
+                <p class="pillar-desc">
+                  Engineered using standard Python libraries. No external frameworks, heavy dependencies, or bloatware.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Architectural Blueprint Illustration -->
+          <div class="about-diagram-wrapper" aria-label="Python Game Loop Architecture Diagram">
+            <svg class="about-illustration" viewBox="0 0 460 380" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flowchart diagram of standard Python game loop">
+              <!-- Grid background -->
+              <rect width="460" height="380" fill="#FDFBF7" />
+              <rect x="15" y="15" width="430" height="350" stroke="#17283F" stroke-width="1.5" />
+              <line x1="15" y1="45" x2="445" y2="45" stroke="#17283F" stroke-width="1" />
+              
+              <!-- Blueprint Header -->
+              <text x="30" y="35" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="700" fill="#17283F">SYSTEM CORE // RUNTIME PIPELINE</text>
+              <text x="430" y="35" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#D66A45">REV 1.0</text>
+
+              <!-- Node 1: User Input -->
+              <g id="node1" transform="translate(60, 70)">
+                <rect width="340" height="50" rx="2" fill="#17283F" />
+                <text x="25" y="30" font-family="'IBM Plex Mono', monospace" font-size="12" font-weight="700" fill="#F2EFE8">01. USER INPUT / PARSER</text>
+                <text x="315" y="30" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#D8C9A7">stdin</text>
+              </g>
+
+              <!-- Arrow 1 to 2 -->
+              <path d="M230 120 L230 150" stroke="#D66A45" stroke-width="2.5" stroke-linecap="round" />
+              <polygon points="230,154 225,145 235,145" fill="#D66A45" />
+
+              <!-- Node 2: Game State Engine -->
+              <g id="node2" transform="translate(60, 160)">
+                <rect width="340" height="50" rx="2" fill="#F2EFE8" stroke="#17283F" stroke-width="2" />
+                <text x="25" y="30" font-family="'IBM Plex Mono', monospace" font-size="12" font-weight="700" fill="#17283F">02. STATE &amp; RULES EVALUATION</text>
+                <text x="315" y="30" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#D66A45">logic</text>
+              </g>
+
+              <!-- Arrow 2 to 3 -->
+              <path d="M230 210 L230 240" stroke="#D66A45" stroke-width="2.5" stroke-linecap="round" />
+              <polygon points="230,244 225,235 235,235" fill="#D66A45" />
+
+              <!-- Node 3: Terminal Output -->
+              <g id="node3" transform="translate(60, 250)">
+                <rect width="340" height="50" rx="2" fill="#D8C9A7" stroke="#17283F" stroke-width="2" />
+                <text x="25" y="30" font-family="'IBM Plex Mono', monospace" font-size="12" font-weight="700" fill="#17283F">03. TERMINAL RENDER &amp; CYCLE</text>
+                <text x="315" y="30" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#17283F">stdout</text>
+              </g>
+
+              <!-- Feedback Loop Arrow back to Node 1 -->
+              <path d="M400 275 H425 V95 H400" fill="none" stroke="#697D88" stroke-width="1.5" stroke-dasharray="4 3" />
+              <text x="430" y="190" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#697D88" transform="rotate(90 430 190)">REPLAY LOOP</text>
+
+              <!-- Footer note -->
+              <text x="230" y="340" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#697D88">★ ISOLATED PROCESS EXECUTION PER MODULE ★</text>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       FOOTER
+       Midnight Navy Ground with Warm Ivory and Burnt Orange Accents
+       ====================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      
+      <div class="footer-top-grid">
+        
+        <!-- Col 1: Brand & College Mission -->
+        <div class="footer-brand">
+          <div class="footer-monogram" aria-hidden="true">PA</div>
+          <div class="footer-brand-title">PYTHON ARCADE</div>
+          <p class="footer-mission">
+            A college mini project exploring Python through four classic games. Designed with an intentional midnight editorial aesthetic celebrating code craftsmanship and retro arcade heritage.
+          </p>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div class="footer-nav-col">
+          <h4 class="footer-col-title">NAVIGATION</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#top" class="footer-nav-link">Home</a></li>
+            <li><a href="#games" class="footer-nav-link">Games</a></li>
+            <li><a href="#about" class="footer-nav-link">About Project</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Collection Index -->
+        <div class="footer-index-col">
+          <h4 class="footer-col-title">COLLECTION INDEX</h4>
+          <ul class="footer-collection-list">
+            <li class="footer-game-item"><span class="game-num">01</span> Higher or Lower</li>
+            <li class="footer-game-item"><span class="game-num">02</span> Blackjack</li>
+            <li class="footer-game-item"><span class="game-num">03</span> Hangman</li>
+            <li class="footer-game-item"><span class="game-num">04</span> Stone Paper Scissors</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div>
+          <span class="footer-accent-arrow">↗</span>
+          PYTHON ARCADE // ISSUE 01 // <span id="currentYear">2026</span>
+        </div>
+        <div>
+          PURE PYTHON &bull; NO DEPENDENCIES &bull; EDITORIAL FRONTEND
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       INTERACTIVE GAME CABINET (Live Pyodide Python Runtime)
+       ====================================================================== -->
+  <div class="modal-overlay" id="gameModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+      
+      <!-- Close Button -->
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close dialog" title="Close (Esc)">
+        &times;
+      </button>
+
+      <!-- Category Label & Python Runtime Engine Badge -->
+      <div class="modal-header-meta">
+        <span class="mono-tag" id="modalCategory">01 / NUMBER GAME</span>
+        <div class="python-engine-badge is-loading" id="pythonEngineBadge">
+          <span id="pythonEngineStatus">INITIALIZING PYODIDE RUNTIME...</span>
+        </div>
+      </div>
+
+      <!-- Game Title & Subtitle -->
+      <h3 class="modal-title" id="modalTitle">Higher or Lower</h3>
+      <p class="modal-subtitle" id="modalSubtitle">Pick a number. Trust your instincts.</p>
+
+      <!-- Global Game Result / Feedback Banner -->
+      <div class="game-result-banner" id="gameResultBanner" style="display: none;">
+        <span id="gameResultMessage">Feedback message</span>
+      </div>
+
+      <!-- Active Game View Container -->
+      <div class="game-cabinet-body">
+        
+        <!-- 1. HIGHER OR LOWER INTERFACE -->
+        <div class="game-play-view" id="viewHigherLower" style="display: none;">
+          <div class="hl-controls-wrapper">
+            
+            <!-- Difficulty Selection -->
+            <div class="difficulty-selector">
+              <span class="selector-label">SELECT DIFFICULTY:</span>
+              <button type="button" class="btn-diff is-active" id="btnDiffEasy" data-diff="easy">EASY (10 TRIES)</button>
+              <button type="button" class="btn-diff" id="btnDiffHard" data-diff="hard">HARD (5 TRIES)</button>
+            </div>
+
+            <!-- Attempts Remaining Gauge -->
+            <div class="attempts-gauge-bar">
+              <span>ATTEMPTS REMAINING</span>
+              <strong id="hlAttemptsCount" style="color: var(--burnt-orange);">10 / 10</strong>
+            </div>
+
+            <!-- Guess Input Row -->
+            <form class="hl-input-row" id="hlGuessForm" onsubmit="return false;">
+              <input type="number" class="game-input" id="hlGuessInput" min="1" max="100" placeholder="Number (1-100)" required autocomplete="off">
+              <button type="submit" class="btn-game-action" id="hlBtnSubmit">GUESS ↗</button>
+            </form>
+
+            <!-- Guess History -->
+            <div>
+              <span class="selector-label">GUESS LOG:</span>
+              <div class="hl-history-list" id="hlHistoryList">
+                <div class="history-item" style="color: var(--slate-blue);">No guesses yet. Enter a number to start.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 2. BLACKJACK INTERFACE -->
+        <div class="game-play-view" id="viewBlackjack" style="display: none;">
+          <div class="bj-table-stage">
+            
+            <!-- Dealer Hand -->
+            <div class="bj-hand-section">
+              <div class="bj-hand-header">
+                <span>DEALER'S HAND</span>
+                <span class="bj-score-pill">SCORE: <span id="bjDealerScore">?</span></span>
+              </div>
+              <div class="cards-spread" id="bjDealerCards">
+                <!-- Cards dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Player Hand -->
+            <div class="bj-hand-section">
+              <div class="bj-hand-header">
+                <span>YOUR HAND</span>
+                <span class="bj-score-pill">SCORE: <span id="bjPlayerScore">0</span></span>
+              </div>
+              <div class="cards-spread" id="bjPlayerCards">
+                <!-- Cards dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Blackjack Action Controls -->
+            <div class="bj-actions-bar">
+              <button type="button" class="btn-game-action btn-bj-hit" id="btnBjHit">HIT (+ CARD)</button>
+              <button type="button" class="btn-game-action btn-bj-stand" id="btnBjStand">STAND (HOLD)</button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 3. HANGMAN INTERFACE -->
+        <div class="game-play-view" id="viewHangman" style="display: none;">
+          <div class="hangman-stage-grid">
+            
+            <!-- ASCII Gallows Screen -->
+            <pre class="hangman-ascii-screen" id="hmAsciiScreen"></pre>
+
+            <!-- Word & Letter Guess Controls -->
+            <div class="hangman-play-column">
+              
+              <!-- Attempts / Lives -->
+              <div class="attempts-gauge-bar">
+                <span>CHANCES REMAINING</span>
+                <strong id="hmLivesCount" style="color: var(--burnt-orange);">6 / 6 LIVES</strong>
+              </div>
+
+              <!-- Word Letter Tiles Slot Display -->
+              <div class="hangman-word-display" id="hmWordDisplay">
+                <!-- Letter slots dynamically populated -->
+              </div>
+
+              <!-- Keyboard Grid of Letters -->
+              <div>
+                <span class="selector-label" style="display: block; margin-bottom: 0.4rem;">CHOOSE A LETTER:</span>
+                <div class="hangman-keyboard-grid" id="hmKeyboard">
+                  <!-- A-Z buttons dynamically populated -->
+                </div>
+              </div>
+
+              <!-- Manual Letter Input -->
+              <form class="hl-input-row" id="hmInputForm" onsubmit="return false;" style="margin-top: 0.25rem;">
+                <input type="text" class="game-input" id="hmLetterInput" maxlength="1" placeholder="Type a letter" pattern="[a-zA-Z]" autocomplete="off" style="max-width: 150px; text-transform: uppercase;">
+                <button type="submit" class="btn-game-action" id="hmBtnSubmit">SUBMIT LETTER</button>
+              </form>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 4. STONE PAPER SCISSORS INTERFACE -->
+        <div class="game-play-view" id="viewStonePaperScissors" style="display: none;">
+          <div>
+            
+            <!-- 3 Choice Buttons -->
+            <div class="sps-choice-buttons">
+              <button type="button" class="sps-btn-choice" data-choice="0">
+                <span class="sps-choice-icon">✊</span>
+                <span class="sps-choice-name">0: ROCK</span>
+              </button>
+              <button type="button" class="sps-btn-choice" data-choice="1">
+                <span class="sps-choice-icon">📄</span>
+                <span class="sps-choice-name">1: PAPER</span>
+              </button>
+              <button type="button" class="sps-btn-choice" data-choice="2">
+                <span class="sps-choice-icon">✌</span>
+                <span class="sps-choice-name">2: SCISSORS</span>
+              </button>
+            </div>
+
+            <!-- Terminal Battle Arena with Original ASCII Art -->
+            <div class="sps-battle-arena">
+              <div class="sps-fighter-box">
+                <span class="fighter-tag">PLAYER MOVE: <span id="spsPlayerMoveTag">-</span></span>
+                <pre class="sps-ascii-pre" id="spsPlayerAscii">Waiting for your choice...</pre>
+              </div>
+              <div class="sps-fighter-box">
+                <span class="fighter-tag">COMPUTER MOVE: <span id="spsComputerMoveTag">-</span></span>
+                <pre class="sps-ascii-pre" id="spsComputerAscii">Waiting for your choice...</pre>
+              </div>
+            </div>
+
+            <!-- Scoreboard -->
+            <div class="sps-scoreboard">
+              <span>PLAYER WINS: <strong id="spsScorePlayer">0</strong></span>
+              <span>DRAWS: <strong id="spsScoreDraws">0</strong></span>
+              <span>COMPUTER WINS: <strong id="spsScoreComputer">0</strong></span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Cabinet Modal Navigation & Replay Controls -->
+      <div class="modal-footer-nav">
+        <button type="button" class="btn-back-to-games" id="btnBackToGames">
+          ← BACK TO GAMES
+        </button>
+        <button type="button" class="btn-restart-game" id="btnRestartGame">
+          ↺ PLAY AGAIN / RESTART
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Pyodide WebAssembly Python Engine from CDN -->
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
